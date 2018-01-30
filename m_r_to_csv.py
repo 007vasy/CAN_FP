@@ -23,7 +23,7 @@ for name,dict_ in temp_dict.items():
     #temp_df.head()
     #print dict_
     temp_df = pd.DataFrame(dict_, columns=['time_ID_s',str(name)])
-    temp_df[['time_ID_s']].apply(np.floor)
+    temp_df[['time_ID_s']] = temp_df[['time_ID_s']].apply(np.floor)
     temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
     print temp_df.head()
     print temp_df.tail()
@@ -31,5 +31,5 @@ for name,dict_ in temp_dict.items():
         output_df = temp_df
         flag = False
     else:
-        output_df.join(temp_df, how='outer')
+        output_df = output_df.join(temp_df, how='outer')
     print output_df.head()

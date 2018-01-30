@@ -22,7 +22,7 @@ for name,dict_ in temp_dict.items():
     #temp_df.head()
     #print dict_
     temp_df = pd.DataFrame(dict_, columns=['time_ID_s',str(name)])
-    temp_df.iloc[0].apply(math.floor)
+    temp_df.loc['time_ID_s'].apply(math.floor)
     temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
     print temp_df.head()
     print temp_df.tail()

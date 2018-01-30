@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import glob
 import math
+import numpy as np
 
 os.chdir("/home/vassb/fingerprint_data/")
 export_location="/home/vassb/fingerprint_data/ansgar_att_six_forklift/"
@@ -22,7 +23,7 @@ for name,dict_ in temp_dict.items():
     #temp_df.head()
     #print dict_
     temp_df = pd.DataFrame(dict_, columns=['time_ID_s',str(name)])
-    temp_df[['time_ID_s']].apply(math.floor)
+    temp_df[['time_ID_s']].apply(np.floor)
     temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
     print temp_df.head()
     print temp_df.tail()

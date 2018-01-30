@@ -1,5 +1,5 @@
 # 700 MB *.mat files observation reduce from 0.01s to 1s with mean and save as *.csv
-import scipy
+import scipy.io
 import pandas as pd
 import os
 import glob

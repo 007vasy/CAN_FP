@@ -25,11 +25,11 @@ for name,dict_ in temp_dict.items():
     temp_df = pd.DataFrame(dict_, columns=['time_ID_s',str(name)])
     temp_df[['time_ID_s']] = temp_df[['time_ID_s']].apply(np.floor)
     temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
-    print temp_df.head()
-    print temp_df.tail()
+    # print temp_df.head()
+    # print temp_df.tail()
     if(flag):
         output_df = temp_df
         flag = False
     else:
         output_df = output_df.merge(temp_df, how='outer', on = 'time_ID_s')
-    print output_df.head()
+    print output_df.columns

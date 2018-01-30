@@ -25,7 +25,7 @@ for name,dict_ in temp_dict.items():
     temp_df = pd.DataFrame(dict_, columns=['time_ID_s',str(name)])
     del temp_dict[name]
     temp_df[['time_ID_s']] = temp_df[['time_ID_s']].apply(np.floor)
-    temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
+    temp_df = temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
     # print temp_df.head()
     # print temp_df.tail()
     if(flag):

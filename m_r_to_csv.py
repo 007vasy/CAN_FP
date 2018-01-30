@@ -17,6 +17,7 @@ wd_filenames = glob.glob('*.mat')
 temp_dict=scipy.io.loadmat('Part 01 Daimler F 00150 MultiTimeChannel.mat')
 for name,dict_ in temp_dict.items():
     print name
-    pd.DataFrame(dict_).head(5)
-    print dict_
+    temp_df = pd.DataFrame(dict_)
+    temp_df.head()
+    # print dict_
 

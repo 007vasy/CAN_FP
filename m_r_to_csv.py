@@ -17,12 +17,13 @@ wd_filenames = glob.glob('*.mat')
 #       print name
 output_df = pd.DataFrame()
 flag = True
-temp_dict=scipy.io.loadmat('Part 01 Daimler F 00150 MultiTimeChannel.mat',mat_dtype = True)
+temp_dict=scipy.io.loadmat('Part 01 Daimler F 00150 MultiTimeChannel.mat')
 for name,dict_ in temp_dict.items():
     print name
     #temp_df.head()
     #print dict_
     temp_df = pd.DataFrame(dict_, columns=['time_ID_s',str(name)])
+    del temp_dict[name]
     temp_df[['time_ID_s']] = temp_df[['time_ID_s']].apply(np.floor)
     temp_df.groupby(by='time_ID_s', as_index=False)[[name]].mean()
     # print temp_df.head()

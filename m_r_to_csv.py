@@ -9,7 +9,12 @@ export_location="/home/vassb/fingerprint_data/ansgar_att_six_forklift/"
 
 wd_filenames = glob.glob('*.mat')
 
-for file in wd_filenames:
-    temp_list=scipy.io.loadmat(file)
-    for name,dict_ in temp_list.items():
-        print name
+#for file in wd_filenames:
+#   temp_dict=scipy.io.loadmat(file)
+#   for name,dict_ in temp_dict.items():
+#       print name
+
+temp_dict=scipy.io.loadmat(file)
+for name,dict_ in temp_dict.items():
+    print name
+    pd.DataFrame(dict_).head()

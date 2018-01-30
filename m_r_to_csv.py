@@ -19,5 +19,5 @@ for name,dict_ in temp_dict.items():
     print name
     #temp_df.head()
     #print dict_
-    temp_df = pd.DataFrame(temp_dict[[name]])
+    temp_df = pd.DataFrame(temp_dict[name])
     temp_df.head()

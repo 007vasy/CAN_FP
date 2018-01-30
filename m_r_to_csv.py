@@ -11,4 +11,4 @@ wd_filenames = glob.glob('*.mat')
 
 for file in wd_filenames:
     temp_list=scipy.io.loadmat(file)
-    print temp_list.colums    
+    print temp_list.columns

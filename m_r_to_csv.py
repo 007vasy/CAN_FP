@@ -31,5 +31,5 @@ for name,dict_ in temp_dict.items():
         output_df = temp_df
         flag = False
     else:
-        output_df = output_df.join(temp_df, how='outer', by = 'time_ID_s')
+        output_df = output_df.join(temp_df, how='outer', on = 'time_ID_s')
     print output_df.head()

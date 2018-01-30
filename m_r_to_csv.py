@@ -21,3 +21,4 @@ for name,dict_ in temp_dict.items():
     #print dict_
     temp_df = pd.DataFrame(dict_)
     print temp_df.head()
+    print temp_df.tail()

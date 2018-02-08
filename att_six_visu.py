@@ -30,6 +30,7 @@ for file in file_list:
     for wl_wol in [0, 1]:
         for s_type in range(1,max(temp_df["steering_cat"])):
             plot_df = temp_df.query('steering_cat == s_type and is.weight == wl_wol')
+
             # hist3D_fancy(
             #     x=plot_df$Speed_Drivemotor_1_RPM, y = plot_df$Torque_Drivemotor_1_Nm, xlab = "RPM", ylab = "Nm", breaks = 8, main = paste(
             #     "Dynamic_", gsub(".csv", "", file, fixed=TRUE), "_s_type:", s_type, "_wl_wol_", wl_wol, "_3Dplot.png", sep=""))

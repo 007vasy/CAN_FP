@@ -18,7 +18,6 @@ for file in file_list:
     temp_df = pd.DataFrame(pd.read_csv(file))
     # NEEDED?
     # temp_df = temp_df[complete.cases(temp_df),]
-    temp_df[["steering_cat"]] = Steering_Cat(temp_df[["Steering_angle_angle"]])
 
     for wl_wol in [0, 1]:
         for s_type in range(1,max(temp_df["steering_cat"])):

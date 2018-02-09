@@ -22,7 +22,7 @@ for file in file_list:
     for wl_wol in [0, 1]:
         for s_type in range(1,max(temp_df["steering_cat"])):
             #Dynamic
-            plot_df = temp_df.query('steering_cat == s_type and is\.weight == wl_wol')
+            plot_df = temp_df.query('steering_cat == s_type and "is.weight" == wl_wol')
             x = plot_df["Speed_Drivemotor_1_RPM"]
             y = plot_df["Torque_Drivemotor_1_Nm"]
             hist, xedges, yedges = np.histogram2d(x, y, bins=8, range=[

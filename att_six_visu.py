@@ -34,7 +34,7 @@ for file in file_list:
             result[:m.shape[0], :m.shape[1]] = m
 
             pd.DataFrame(result, index=[str(n) for n in yedges[::-1]], columns=[str(n) for n in xedges]).to_csv(
-                export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:"+ s_type+ "_wl_wol_"+ wl_wol+ "_3Dplot.csv")
+                export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:_"+ str(s_type)+ "_wl_wol:_"+ str(wl_wol)+ "_3Dplot.csv")
 
         #Stress_
         # plot_df = temp_df.query('steering_cat == s_type')

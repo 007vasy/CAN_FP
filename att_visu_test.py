@@ -57,17 +57,16 @@ m = np.asmatrix([[1 , 2],[3,4]])
 result[:m.shape[0],:m.shape[1]] = m
 
 temp_df = pd.DataFrame(pd.read_csv("/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/merged_machines/IMRl_F_00214_att_merged.csv"))
-    # NEEDED?
 temp_df = temp_df.dropna(how='any')
 temp_df["is.weight"].astype(str).astype(bool)
-temp_df["steering_cat"] = temp_df["steering_cat"].astype(str)
+temp_df["steering_cat"] = temp_df["steering_cat"].astype(str).astype(int)
 
 export_location = "/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/merged_machines/"
 
-for wl_wol in [0, 1]:
-    for s_type in range(1,max(temp_df["steering_cat"])):
+for wl_wol in [True, False]:
+    for s_type in range(1,max(temp_df["steering_cat"])+1):
         #Dynamic
-        plot_df = temp_df.query('steering_cat == ' + int(s_type) + "and 'is.weight' == " + wl_wol)
+        plot_df = temp_df[np.logical_and(temp_df.steering_cat == s_type,temp_df['is.weight'] == wl_wol)]
         x = plot_df["Speed_Drivemotor_1_RPM"]
         y = plot_df["Torque_Drivemotor_1_Nm"]
         hist, xedges, yedges = np.histogram2d(x, y, bins=8, range=[
@@ -81,3 +80,7 @@ for wl_wol in [0, 1]:
         pd.DataFrame(result, index=[str(n) for n in yedges[::-1]], columns=[str(n) for n in xedges]).to_csv(export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:"+ s_type+ "_wl_wol_"+ wl_wol+ "_3Dplot.csv")
 
       temp_df.dtypes
+
+wl_wol = False
+s_type = 2
+temp_df.query('steering_cat == ' + s_type + "and 'is.weight' == " + wl_wol)

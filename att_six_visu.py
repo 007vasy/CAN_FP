@@ -10,7 +10,7 @@ import numpy as np
 
 
 os.chdir("/home/vassb/fingerprint_data/ansgar_att_six_forklift_att_merged/")
-export_location = "/home/vassb/fingerprint_data/ansgar_att_six_forklift_att_merged/"
+export_location = "/home/vassb/fingerprint_data/histogramm3d_data/"
 
 file_list = glob.glob('*.csv')
 

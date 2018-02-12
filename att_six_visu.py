@@ -26,8 +26,8 @@ for file in file_list:
             x = plot_df["Speed_Drivemotor_1_RPM"]
             y = plot_df["Torque_Drivemotor_1_Nm"]
             hist, xedges, yedges = np.histogram2d(x, y, bins=8, range=[
-                [min(temp_df["Speed_Drivemotor_1_RPM"]), max(temp_df["Speed_Drivemotor_1_RPM"])],
-                [min(temp_df["Torque_Drivemotor_1_Nm"]), max(temp_df["Torque_Drivemotor_1_Nm"])]])
+                [-5500, 5500],
+                [-80, 80]])
 
             m = np.asmatrix(np.rot90(hist))
             result = np.zeros((9, 9))

@@ -14,13 +14,16 @@ export_location = "/home/vassb/fingerprint_data/ansgar_att_six_forklift_att_merg
 
 file_list = glob.glob('*.csv')
 
+
+
 for file in file_list:
     temp_df = pd.DataFrame(pd.read_csv(file))
     # NEEDED?
     # temp_df = temp_df[complete.cases(temp_df),]
-
+    temp_df.columns
+    
     for wl_wol in [0, 1]:
-        for s_type in range(1,max(temp_df["steering_cat"])):
+        for s_type in range(1,max(temp_df["steering_cat"])+1):
             #Dynamic
             plot_df = temp_df[np.logical_and(temp_df.steering_cat == s_type,temp_df['is.weight'] == wl_wol)]
             x = plot_df["Speed_Drivemotor_1_RPM"]

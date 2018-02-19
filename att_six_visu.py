@@ -8,9 +8,13 @@ import os.path
 import glob
 import numpy as np
 
-
+#Batman
 os.chdir("/home/vassb/fingerprint_data/ansgar_att_six_forklift_att_merged/")
 export_location = "/home/vassb/fingerprint_data/histogramm3d_data/"
+
+#PC
+#os.chdir("/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/merged_machines")
+#export_location = "/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/histogramm3d_data"
 
 file_list = glob.glob('*.csv')
 
@@ -38,6 +42,30 @@ for file in file_list:
 
             pd.DataFrame(result, index=[str(n) for n in yedges[::-1]], columns=[str(n) for n in xedges]).to_csv(
                 export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:_"+ str(s_type)+ "_wl_wol:_"+ str(wl_wol)+ "_3Dplot.csv")
+
+            fig = plt.figure()
+            ax = fig.add_subplot(111, projection='3d')
+
+            # Construct arrays for the anchor positions of the 16 bars.
+            # Note: np.meshgrid gives arrays in (ny, nx) so we use 'F' to flatten xpos,
+            # ypos in column-major order. For numpy >= 1.7, we could instead call meshgrid
+            # with indexing='ij'.
+            xpos, ypos = np.meshgrid(xedges[:-1] + 0.25, yedges[:-1] + 0.25)
+            xpos = xpos.flatten('F')
+            ypos = ypos.flatten('F')
+            zpos = np.zeros_like(xpos)
+
+            # Construct arrays with the dimensions for the 16 bars.
+            dx = 1000 * np.ones_like(xpos)
+            dy = 15 * np.ones_like(ypos)
+            dz = hist.flatten()
+
+            ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='g', zsort='average',alpha=0.5)
+            ax.set_xlabel('Speed_Drivemotor_1_RPM')
+            ax.set_ylabel('Torque_Drivemotor_1_Nm')
+            ax.set_zlabel('Occurrence')
+
+            fig.savefig(export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:_"+ str(s_type)+ "_wl_wol:_"+ str(wl_wol)+ "_3Dplot.png", bbox_inches='tight')
 
         #Stress_
         # plot_df = temp_df.query('steering_cat == s_type')

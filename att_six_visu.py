@@ -9,12 +9,12 @@ import glob
 import numpy as np
 
 #Batman
-os.chdir("/home/vassb/fingerprint_data/ansgar_att_six_forklift_att_merged/")
-export_location = "/home/vassb/fingerprint_data/histogramm3d_data/"
+#os.chdir("/home/vassb/fingerprint_data/ansgar_att_six_forklift_att_merged/")
+#export_location = "/home/vassb/fingerprint_data/histogramm3d_data/"
 
 #PC
-#os.chdir("/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/merged_machines")
-#export_location = "/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/histogramm3d_data"
+os.chdir("/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/merged_machines")
+export_location = "/media/vasy/Data/Doksik/projekts/AITIA/reduced_can_fp/histogramm3d_data"
 
 file_list = glob.glob('*.csv')
 
@@ -40,8 +40,8 @@ for file in file_list:
             result = np.zeros((9, 9))
             result[:m.shape[0], :m.shape[1]] = m
 
-            pd.DataFrame(result, index=[str(n) for n in yedges[::-1]], columns=[str(n) for n in xedges]).to_csv(
-                export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:_"+ str(s_type)+ "_wl_wol:_"+ str(wl_wol)+ "_3Dplot.csv")
+            #pd.DataFrame(result, index=[str(n) for n in yedges[::-1]], columns=[str(n) for n in xedges]).to_csv(
+            # export_location +"Dynamic_"+ os.path.splitext(file)[0] +"_s_type:_"+ str(s_type)+ "_wl_wol:_"+ str(wl_wol)+ "_3Dplot.csv")
 
             fig = plt.figure()
             ax = fig.add_subplot(111, projection='3d')
